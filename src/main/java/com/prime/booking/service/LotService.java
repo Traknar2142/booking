@@ -7,6 +7,7 @@ import com.prime.booking.mapper.LotMapper;
 import com.prime.booking.model.LotEntity;
 import com.prime.booking.repository.LotRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,11 +19,13 @@ public class LotService {
     private LotRepository lotRepository;
     private LotMapper mapper;
 
+    @Transactional
     public Page<LotDto> findAll(LotEntityFilter lotEntityFilter, Pageable pageable) {
         return lotRepository.findAll(lotEntityFilter, pageable)
                 .map(lot -> mapper.toDto(lot));
     }
 
+    @Transactional
     public LotEntity findById(Long id) {
         return lotRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Лот с id = %d не найден", id)));
