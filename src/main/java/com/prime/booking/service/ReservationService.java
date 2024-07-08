@@ -26,7 +26,6 @@ public class ReservationService {
         ReservationEntity reservation = reservationMapper.toEntity(reservationDto);
         reservation.setLotEntity(lot);
         ReservationEntity save = reservationRepository.save(reservation);
-        LocalDateTime localDateTime = LocalDateTime.now();
         return reservationMapper.toDto(save);
 
     }
