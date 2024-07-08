@@ -5,39 +5,35 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "lot")
-public class LotEntity {
-
+@Table(name = "reservation")
+public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "fio")
+    private String fio;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "reservation_datetime")
+    private LocalDateTime reservationDateTime;
 
-    @Column(name = "address")
-    private String address;
+    @ManyToOne
+    @JoinColumn(name = "lot_id")
+    private LotEntity lotEntity;
 
-    @Column(name = "sq")
-    private Integer sq;
-
-    @Column(name = "floor")
-    private Integer floor;
-
-    @Column(name = "count_of_rooms")
-    private Integer countOfRooms;
-
+    @Column(name = "phone_number")
+    private Long phoneNumber;
 }
