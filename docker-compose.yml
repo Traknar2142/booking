@@ -1,5 +1,13 @@
 version: '1'
 services:
+  redis:
+    image: redis:latest
+    container_name: my_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
   postgres:
     image: postgres:14
     environment:
@@ -9,4 +17,6 @@ services:
     ports:
       - "5432:5432"
 networks:
+  backend:
+    driver: bridge
   default:

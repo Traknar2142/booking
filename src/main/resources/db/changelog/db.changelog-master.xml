@@ -7,5 +7,6 @@
     <include file="/db/changelog/lot.xml"/>
     <include file="db/changelog/data/insert_lots_data.xml"/>
     <include file="/db/changelog/reservation.xml"/>
+    <include file="/db/changelog/user.xml"/>
 
 </databaseChangeLog>
