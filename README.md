@@ -25,7 +25,7 @@ docker-compose up
 При старте запустится миграция liquibase с созданием таблиц и загрузкой данных с лотами.
 
 Доступ к API приложения осуществляется через порт 8080 хост-машины.\
-Доступ из swagger осуществляется по ссылке: http://localhost:8080/swagger-ui.html/
+Доступ из swagger осуществляется по ссылке: http://localhost:8080/swagger-ui/index.html
 
 ## Набор методов
 ## GET /api/booking/find-all
