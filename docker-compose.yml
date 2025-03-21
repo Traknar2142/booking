@@ -16,6 +16,11 @@ services:
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
 networks:
   backend:
     driver: bridge

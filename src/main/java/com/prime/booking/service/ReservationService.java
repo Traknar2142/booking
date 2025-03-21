@@ -1,5 +1,6 @@
 package com.prime.booking.service;
 
+import com.prime.booking.annotations.CustomSpan;
 import com.prime.booking.dto.ReservationDto;
 import com.prime.booking.exceptions.ReservationAlreadyExistsException;
 import com.prime.booking.mapper.ReservationMapper;
@@ -20,6 +21,7 @@ public class ReservationService {
     private ReservationMapper reservationMapper;
 
     @Transactional
+    @CustomSpan
     public ReservationDto makeReservationProcess(ReservationDto reservationDto) {
         LotEntity lot = lotService.findById(reservationDto.getLotId());
         checkReservation(reservationDto);

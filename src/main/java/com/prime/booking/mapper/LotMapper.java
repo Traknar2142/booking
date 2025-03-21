@@ -1,5 +1,6 @@
 package com.prime.booking.mapper;
 
+import com.prime.booking.annotations.CustomSpan;
 import com.prime.booking.dto.LotDto;
 import com.prime.booking.model.LotEntity;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class LotMapper {
     private final ModelMapper modelMapper;
 
+    @CustomSpan
     public LotDto toDto(LotEntity lotEntity) {
         return modelMapper.map(lotEntity, LotDto.class);
     }

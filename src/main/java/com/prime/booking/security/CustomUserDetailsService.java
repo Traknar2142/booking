@@ -2,6 +2,7 @@ package com.prime.booking.security;
 
 import java.util.List;
 
+import com.prime.booking.annotations.CustomSpan;
 import com.prime.booking.model.User;
 import com.prime.booking.repository.UserRepository;
 
@@ -21,6 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
+    @CustomSpan
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));

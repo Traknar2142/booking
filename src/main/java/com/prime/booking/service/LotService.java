@@ -1,6 +1,7 @@
 package com.prime.booking.service;
 
 
+import com.prime.booking.annotations.CustomSpan;
 import com.prime.booking.dto.LotDto;
 import com.prime.booking.filter.LotEntityFilter;
 import com.prime.booking.mapper.LotMapper;
@@ -20,12 +21,14 @@ public class LotService {
     private LotMapper mapper;
 
     @Transactional
+    @CustomSpan
     public Page<LotDto> findAll(LotEntityFilter lotEntityFilter, Pageable pageable) {
         return lotRepository.findAll(lotEntityFilter, pageable)
                 .map(lot -> mapper.toDto(lot));
     }
 
     @Transactional
+    @CustomSpan
     public LotEntity findById(Long id) {
         return lotRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.format("Лот с id = %d не найден", id)));

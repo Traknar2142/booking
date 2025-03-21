@@ -1,6 +1,7 @@
 package com.prime.booking.filter;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.prime.booking.annotations.CustomSpan;
 import com.prime.booking.model.LotEntity;
 import com.prime.booking.utils.StringUtils;
 import jakarta.persistence.criteria.Predicate;
@@ -43,6 +44,7 @@ public class LotEntityFilter implements Filter<LotEntity> {
     private String city;
 
     @Override
+    @CustomSpan
     public Specification<LotEntity> toSpecification() {
         return (root, criteriaQuery, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
